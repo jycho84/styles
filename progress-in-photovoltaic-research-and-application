@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" page-range-format="minimal" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
+  <info>
+    <title>Progress in photovoltaics - Jinyoun CHO</title>
+    <title-short>Prog. Photovolt. Res. Appl</title-short>
+    <id>http://csl.mendeley.com/styles/18944931/Progressphotovoltaic-2</id>
+    <link href="http://www.zotero.org/styles/journal-of-adolescent-health" rel="self"/>
+    <link href="http://www.zotero.org/styles/elsevier-vancouver" rel="template"/>
+    <link href="http://www.jahonline.org/authorinfo#idp1329360" rel="documentation"/>
+    <author>
+      <name>Sebastian Karcher</name>
+    </author>
+    <contributor>
+      <name>Jinyoun CHO</name>
+      <uri>http://www.mendeley.com/profiles/jinyoun-cho2/</uri>
+    </contributor>
+    <category citation-format="numeric"/>
+    <issn>1054-139X</issn>
+    <summary>Elsevier Vancouver with 4/3 et al and webpages</summary>
+    <updated>2018-01-11T16:51:42+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name initialize-with="" delimiter=", " delimiter-precedes-last="always" name-as-sort-order="all" sort-separator=" "/>
+      <label form="long" prefix=", "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name initialize-with="" delimiter=", " delimiter-precedes-last="always" name-as-sort-order="all" sort-separator=" "/>
+      <label form="long" prefix=", " suffix="."/>
+    </names>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text term="no date" form="short"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <text variable="publisher-place" suffix=": " text-case="title"/>
+    <text variable="publisher" suffix="; "/>
+    <text macro="year-date" suffix=". "/>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout prefix="[" suffix="]" delimiter=",">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" second-field-align="flush" et-al-min="4" et-al-use-first="3">
+    <layout suffix=".">
+      <text variable="citation-number" suffix="."/>
+      <text macro="author" suffix=". "/>
+      <choose>
+        <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+          <group>
+            <text variable="title" suffix=". "/>
+            <text variable="volume" prefix="vol. "/>
+            <text macro="edition"/>
+            <text macro="publisher"/>
+            <text variable="number-of-pages" form="short" suffix=" p."/>
+          </group>
+        </if>
+        <else-if type="chapter paper-conference" match="any">
+          <group>
+            <group>
+              <text variable="title" suffix=", "/>
+              <group>
+                <text term="in" text-case="sentence" suffix=": "/>
+                <text macro="editor"/>
+              </group>
+              <group prefix="In ">
+                <text variable="container-title" font-style="italic" suffix=", "/>
+                <text variable="volume" prefix="vol. "/>
+              </group>
+              <text macro="edition"/>
+            </group>
+            <text macro="publisher"/>
+            <group delimiter=" ">
+              <text variable="page" strip-periods="false" suffix=". "/>
+              <text variable="DOI" prefix="http://doi.org/"/>
+            </group>
+          </group>
+        </else-if>
+        <else-if type="patent">
+          <group delimiter=", ">
+            <group delimiter=". ">
+              <text variable="title"/>
+              <text variable="number"/>
+            </group>
+            <text macro="year-date"/>
+          </group>
+        </else-if>
+        <else-if type="thesis">
+          <group delimiter=". ">
+            <text variable="title"/>
+            <text variable="genre"/>
+            <group delimiter=", ">
+              <text variable="publisher"/>
+              <text macro="year-date"/>
+            </group>
+          </group>
+        </else-if>
+        <else-if type="webpage">
+          <group delimiter=". ">
+            <text variable="title"/>
+            <choose>
+              <if variable="URL">
+                <group delimiter=": ">
+                  <text term="available at" text-case="capitalize-first"/>
+                  <text variable="URL"/>
+                </group>
+                <group>
+                  <text term="accessed" text-case="capitalize-first"/>
+                  <date variable="accessed" form="text"/>
+                </group>
+              </if>
+            </choose>
+          </group>
+        </else-if>
+        <else>
+          <group>
+            <group delimiter=" ">
+              <group delimiter=". ">
+                <text variable="title"/>
+                <text variable="container-title" text-case="title" strip-periods="false" font-style="italic"/>
+              </group>
+              <group>
+                <text macro="year-date" suffix="; "/>
+                <text variable="volume" font-weight="bold" suffix=": "/>
+                <text variable="page" form="short" strip-periods="false" quotes="false" font-variant="normal" text-decoration="none" suffix=". "/>
+              </group>
+            </group>
+            <text variable="DOI" prefix="http://doi.org/"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>
